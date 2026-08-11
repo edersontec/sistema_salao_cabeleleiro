@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Wanderley Lopes Batista">     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+
+<link rel="stylesheet" href="css/salao.css">
+<title>Comprovante de Agendamento</title>
+
+</head>
+
+<body>
+
+<div id="resultado"></div>
+
+<script>
+    // ========================================================= 
+    // RECUPERAÇÃO DOS DADOS DO LOCALSTORAGE
+    // =========================================================
+
+    // Recupera o nome do cliente. // || "Não informado" = usa "Não informado" caso não exista valor.
+    let nomeCliente = localStorage.getItem("nomeCliente") || "Não informado";
+    let profissional = localStorage.getItem("profissional") || "Não informado";
+    let sexoCliente = localStorage.getItem("sexoCliente") || "Não informado";
+    let listaServicos = localStorage.getItem("listaServicos") || "Nenhum";
+    let dataAtendimento = localStorage.getItem("data") || "Não informada";
+    let horarioAtendimento = localStorage.getItem("horario") || "Não informado";
+
+    // =========================================================
+    // LOCALIZAÇÃO DA ÁREA DO COMPROVANTE
+    // =========================================================
+
+    let areaResultado = document.getElementById("resultado");
+    // Localiza a div onde o comprovante será inserido.
+
+    // =========================================================
+    // CRIAÇÃO DO COMPROVANTE 
+    // =========================================================
+
+    // Insere o conteúdo dinâmico na tela do comprovante
+    areaResultado.innerHTML = `
+        <div class="comprovante">
+            <h3 class="titulo-comprovante">
+                COMPROVANTE DE AGENDAMENTO - SALÃO
+            </h3>
+            <hr>
+            <!-- Exibe o nome do cliente e os demais dados -->
+            <p><strong>Cliente:</strong> ${nomeCliente}</p>
+            <p><strong>Profissional:</strong> ${profissional}</p>
+            <p><strong>Sexo:</strong> ${sexoCliente}</p>
+            <p><strong>Serviços:</strong> ${listaServicos}</p>
+            <p><strong>Data do Atendimento:</strong> ${dataAtendimento}</p>
+            <p><strong>Horário:</strong> ${horarioAtendimento}</p>
+
+            <button onclick="window.print()" class="botao">
+                IMPRIMIR COMPROVANTE
+            </button>
+            
+            <br><br>
+            <a href="cadastro_agendamento.html" style="color: #ad1457; font-weight: bold; text-decoration: none;">← VOLTAR PARA O CADASTRO</a>
+        </div>
+    `;
+</script>
+
+</body>
+</html>

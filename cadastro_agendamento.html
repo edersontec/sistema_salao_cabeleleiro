@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8"> <!-- Define a codificação -->
+    <meta name="author" content="Wanderley Lope Batista">
+    <meta name="viewport" content="device-width, initial-scale=1.0">
+
+    <title>Agendamento</title> <!-- Título da página -->
+
+    <link rel="stylesheet" href="css/salao.css"> <!-- Carrega o CSS -->
+    <script src="js/salao.js"></script> <!-- Carrega o JavaScript -->
+
+</head>
+
+<body>
+
+<h2>AGENDAMENTO</h2> <!-- Título -->
+
+<ul class="menu"> <!-- Menu -->
+    <li><a href="index.html" target="principal">PÁGINA INICIAL</a></li> <!-- Link inicial -->
+</ul>
+
+<fieldset> <!-- Área do formulário -->
+    <legend><strong>DADOS DO AGENDAMENTO</strong></legend> <!-- Título do formulário -->
+
+    <form onsubmit="cadastrarAgendamento(); return false;"> <!-- Executa a função -->
+
+        <label><strong>Nome do Cliente:</strong></label><br> <!-- Nome -->
+        <input type="text" id="nome" style="width: 98%; padding: 10px;" required><br><br> <!-- Campo nome -->
+
+        <label><strong>Profissional Preferido:</strong></label><br> <!-- Profissional -->
+        <select id="profissional"> <!-- Lista de profissionais -->
+            <option value="Carlos (Cabeleireiro)">Carlos (Cabeleireiro)</option>
+            <option value="Mariana (Cabeleireira)">Mariana (Cabeleireira)</option>
+            <option value="Roberto (Barbeiro)">Roberto (Barbeiro)</option>
+            <option value="Ana (Esteticista)">Ana (Esteticista)</option>
+            <option value="Indiferente">Indiferente</option>
+        </select><br><br>
+
+        <label><strong>Sexo:</strong></label><br> <!-- Perfil -->
+        <input type="radio" name="sexo" value="Masculino" required> Masculino
+        <input type="radio" name="sexo" value="Feminino"> Feminino<br><br>
+    
+
+        <label><strong>Serviços Desejados:</strong></label><br> <!-- Serviços -->
+        <input type="checkbox" class="serv" value="Corte"> Corte de Cabelo
+        <input type="checkbox" class="serv" value="Barba"> Barba
+        <input type="checkbox" class="serv" value="Coloração"> Coloração
+        <input type="checkbox" class="serv" value="Escova / Hidratação"> Escova / Hidratação
+        <input type="checkbox" class="serv" value="Manicure"> Manicure<br><br>
+
+        <label><strong>Data do Atendimento:</strong></label><br> <!-- Data -->
+        <input type="date" id="data" required><br><br> <!-- Campo data -->
+
+        <label><strong>Horário:</strong></label><br> <!-- Horário -->
+        <input type="time" id="horario" style="padding: 8px;" required><br><br> <!-- Campo horário -->
+
+        <input class="botao" type="submit" value="CONFIRMAR AGENDAMENTO"> <!-- Confirma -->
+
+    </form>
+</fieldset>
+
+<div id="resultado" style="margin-top: 20px; min-height: 50px;"></div> <!-- Área de resultado -->
+
+</body>
+</html>
+

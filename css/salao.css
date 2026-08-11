@@ -1,0 +1,169 @@
+/* ================================
+   CONFIGURAÇÕES GERAIS
+   ================================ */
+
+body { /* Corpo da página */
+    background: #fce4ec; /* Fundo */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte */
+    font-size: 18px; /* Tamanho do texto */
+    margin: 0; /* Remove margem */
+    padding: 20px; /* Espaçamento interno */
+}
+
+/* ================================
+   TÍTULO
+   ================================ */
+
+h2 { /* Título h2 */
+    background: #ad1457; /* Fundo */
+    color: white; /* Cor do texto */
+    text-align: center; /* Centraliza */
+    padding: 20px; /* Espaçamento */
+    border-radius: 10px; /* Arredonda bordas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* ================================
+   BANNER
+   ================================ */
+
+#banner { /* Imagem do banner */
+    width: 100%; /* Largura total */
+    height: auto; /* Altura automática */
+    border-radius: 15px; /* Bordas arredondadas */
+    margin-bottom: 20px; /* Espaço inferior */
+}
+
+/* ================================
+   MENU
+   ================================ */
+
+ul.menu { /* Lista do menu */
+    background: #212121; /* Fundo */
+    padding: 15px; /* Espaçamento */
+    list-style: none; /* Remove marcadores */
+    text-align: left; /* Alinha à esquerda */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+ul.menu li { /* Itens do menu */
+    display: inline; /* Deixa em linha */
+    margin-right: 25px; /* Espaço entre itens */
+}
+
+ul.menu li a { /* Links do menu */
+    color: #f8bbd0; /* Cor do link */
+    text-decoration: none; /* Remove sublinhado */
+    text-transform: uppercase; /* Letras maiúsculas */
+    font-weight: bold; /* Texto em negrito */
+    font-size: 20px; /* Tamanho da fonte */
+}
+
+ul.menu li a:hover { /* Mouse sobre o link */
+    color: white; /* Muda a cor */
+    border-bottom: 2px solid white; /* Linha inferior */
+}
+
+/* ================================
+   FORMULÁRIO
+   ================================ */
+
+fieldset { /* Área do formulário */
+    border: 3px solid #ad1457; /* Borda */
+    border-radius: 15px; /* Arredonda bordas */
+    background: white; /* Fundo */
+    padding: 25px; /* Espaçamento */
+}
+
+legend { /* Título do formulário */
+    font-weight: bold; /* Negrito */
+    padding: 0 10px; /* Espaçamento */
+    color: #ad1457; /* Cor do texto */
+}
+
+input#nome { /* Campo nome */
+    width: 95%; /* Largura */
+    padding: 12px; /* Espaçamento */
+    font-size: 18px; /* Tamanho da fonte */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 5px; /* Arredonda bordas */
+}
+
+/* ================================
+   BOTÕES
+   ================================ */
+
+.botao{ /* Botão */
+    margin-top: 15px; /* Espaço superior */
+    padding: 10px 20px; /* Espaçamento */
+    background: #ad1457; /* Fundo */
+    color: white; /* Texto */
+    border: none; /* Remove borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de clique */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+.botao:hover { /* Mouse sobre botão */
+    background: #880e4f; /* Muda o fundo */
+}
+
+/* ================================
+   RODAPÉ
+   ================================ */
+
+#rodape { /* Rodapé */
+    text-align: center; /* Centraliza */
+    margin-top: 30px; /* Espaço superior */
+    font-size: 14px; /* Tamanho do texto */
+}
+
+/* ================================
+   TABELA DE HORÁRIOS
+   ================================ */
+
+table.tabela-horario { /* Tabela */
+    margin: 40px auto; /* Centraliza */
+    border-collapse: collapse; /* Junta bordas */
+    width: 70%; /* Largura */
+    font-family: Arial, sans-serif; /* Fonte */
+    font-size: 20px; /* Tamanho do texto */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra */
+    background-color: #ffffff; /* Fundo branco */
+}
+
+table.tabela-horario th { /* Cabeçalho */
+    background-color: #c2185b; /* Fundo */
+    color: white; /* Texto */
+    padding: 14px; /* Espaçamento */
+    text-align: center; /* Centraliza */
+}
+
+table.tabela-horario td { /* Células */
+    padding: 12px; /* Espaçamento */
+    text-align: center; /* Centraliza */
+    border: 1px solid #ddd; /* Borda */
+}
+
+table.tabela-horario tr:nth-child(even) { /* Linhas pares */
+    background-color: #fce4ec; /* Fundo rosa */
+}
+
+/* ================================
+   COMPROVANTE
+   ================================ */
+
+.comprovante { /* Área do comprovante */
+    border: 2px solid #ad1457; /* Borda */
+    padding: 20px; /* Espaçamento */
+    margin-top: 20px; /* Espaço superior */
+    background: white; /* Fundo */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.titulo-comprovante { /* Título */
+    color: #ad1457; /* Cor */
+    margin-top: 0; /* Remove margem */
+}
+

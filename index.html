@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <!-- Define o conjunto de caracteres como UTF-8 (permite acentuação corretamente) -->
+  <meta charset="UTF-8">
+  <meta name="author" content="Wanderley Lopes Batista">     
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+
+  <!-- Define o título que aparece na aba do navegador -->
+  <title>Portal Salão de Cabeleireiro</title>
+
+  <!-- Importa o arquivo CSS externo para estilizar a página -->
+  <link rel="stylesheet" href="css/salao.css">
+</head>
+<body>
+
+    <!-- Título principal da página -->
+    <h2>PORTAL SALÃO DE CABELEIREIRO</h2>
+
+    <!-- Menu de navegação principal -->
+  <ul class="menu">
+ 
+    <!-- Link para a página de agendamento -->
+    <li><a href="cadastro_agendamento.html">AGENDAMENTO</a></li>
+
+    <!-- Link fictício para serviços -->
+    <li><a href="#servicos">Serviços</a></li>
+
+    <!-- Link fictício para contato -->
+    <li><a href="#contato">Contato</a></li>
+	
+  </ul>
+
+  <!-- Banner com imagem externa (mantido o mesmo nome do arquivo) -->
+  <img id="banner" 
+       src="imagem/banner.jpg"
+       alt="Imagem do banner do Salão de Cabeleireiro">
+
+  <!-- Caixa branca com conteúdo informativo principal -->
+  <div style="background: white; padding: 20px; border-radius: 10px;">
+
+    <!-- Subtítulo da seção -->
+    <h3>&#x2702;&#xFE0F; Nossos Cuidados</h3>
+
+    <!-- Parágrafos explicativos -->
+    <p>Oferecemos o melhor atendimento para cuidar do seu visual e bem-estar.</p>
+    <p>Nossos profissionais são especializados nas últimas tendências de corte e estética.</p>
+    <p>Utilizamos produtos de alta qualidade para o tratamento dos cabelos e barba.</p>
+    <p>O ambiente é climatizado para garantir o seu total conforto durante o atendimento.</p>
+    <p>Venha nos visitar e comprove o nosso padrão de excelência.</p>
+
+    <!-- Lista de serviços oferecidos -->
+    <h3 id="servicos">&#128135 Serviços Oferecidos</h3>
+    <ul>
+      <li>Corte de Cabelo</li>
+      <li>Barba</li>
+      <li>Pintura / Coloração</li>
+      <li>Escova / Hidratação</li>
+      <li>Manicure e Pedicure</li>
+    </ul>
+    
+    <!-- Tabela simples com horários -->
+    <h3> &#x23F0; Horário de Funcionamento</h3>
+    
+    <table class="tabela-horario">
+      <tr>
+        <th>Dia da Semana</th>
+        <th>Horário de Atendimento</th>
+        <th>Observações</th>
+      </tr>
+
+      <tr>
+        <td>Segunda a Sexta</td>
+        <td>09:00 às 19:00</td>
+        <td>Atendimento normal</td>
+      </tr>
+
+      <tr>
+        <td>Sábado</td>
+        <td>09:00 às 17:00</td>
+        <td>Horário reduzido</td>
+      </tr>
+
+      <tr>
+        <td>Domingo</td>
+        <td>Fechado</td>
+        <td>Apenas com hora marcada</td>
+      </tr>
+    </table>
+
+    <!-- Formulário simples de contato -->
+    <h3 id="contato">&#128233 Fale Conosco</h3>
+    <form>
+      <!-- Campo para o nome do cliente -->
+      <label>Nome:</label><br>
+      <input type="text" id="nome" name="nome"><br><br>
+
+      <!-- Campo para o e-mail -->
+      <label>Email:</label><br>
+      <input type="email" name="email"><br><br>
+
+      <label>WhatsApp:</label><br>
+      <input type="tel" name="whatsapp" placeholder="(31) 9xxxx-xxxx"><br><br>
+
+      <!-- Caixa de texto para mensagem -->
+      <label>Mensagem:</label><br>
+      <textarea rows="4" cols="40"></textarea><br><br>
+
+      <!-- Botão de envio -->
+      <button class="botao" type="submit">ENVIAR</button>
+    </form>
+
+  </div>
+
+  <!-- Rodapé da página -->
+  <footer id="rodape">
+    <p>&copy 2026 - Portal Salão de Cabeleireiro | Desenvolvido para fins educacionais</p>
+  </footer>    
+
+</body> 
+</html>
