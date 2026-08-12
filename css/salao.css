@@ -38,7 +38,7 @@ h2 { /* Título h2 */
    MENU
    ================================ */
 
-ul.menu { /* Lista do menu */
+.menu { /* Lista do menu */
     background: #212121; /* Fundo */
     padding: 15px; /* Espaçamento */
     list-style: none; /* Remove marcadores */
@@ -46,12 +46,12 @@ ul.menu { /* Lista do menu */
     border-radius: 5px; /* Bordas arredondadas */
 }
 
-ul.menu li { /* Itens do menu */
+.menu li { /* Itens do menu */
     display: inline; /* Deixa em linha */
     margin-right: 25px; /* Espaço entre itens */
 }
 
-ul.menu li a { /* Links do menu */
+.menu li a { /* Links do menu */
     color: #f8bbd0; /* Cor do link */
     text-decoration: none; /* Remove sublinhado */
     text-transform: uppercase; /* Letras maiúsculas */
@@ -59,7 +59,7 @@ ul.menu li a { /* Links do menu */
     font-size: 20px; /* Tamanho da fonte */
 }
 
-ul.menu li a:hover { /* Mouse sobre o link */
+.menu li a:hover { /* Mouse sobre o link */
     color: white; /* Muda a cor */
     border-bottom: 2px solid white; /* Linha inferior */
 }
@@ -81,7 +81,7 @@ legend { /* Título do formulário */
     color: #ad1457; /* Cor do texto */
 }
 
-input#nome { /* Campo nome */
+#nome { /* Campo nome */
     width: 95%; /* Largura */
     padding: 12px; /* Espaçamento */
     font-size: 18px; /* Tamanho da fonte */
@@ -122,7 +122,7 @@ input#nome { /* Campo nome */
    TABELA DE HORÁRIOS
    ================================ */
 
-table.tabela-horario { /* Tabela */
+.tabela-horario { /* Tabela */
     margin: 40px auto; /* Centraliza */
     border-collapse: collapse; /* Junta bordas */
     width: 70%; /* Largura */
@@ -132,21 +132,23 @@ table.tabela-horario { /* Tabela */
     background-color: #ffffff; /* Fundo branco */
 }
 
-table.tabela-horario th { /* Cabeçalho */
+.tabela-horario th { /* Cabeçalho */
     background-color: #c2185b; /* Fundo */
     color: white; /* Texto */
     padding: 14px; /* Espaçamento */
     text-align: center; /* Centraliza */
 }
 
-table.tabela-horario td { /* Células */
+.tabela-horario td { /* Células */
     padding: 12px; /* Espaçamento */
     text-align: center; /* Centraliza */
     border: 1px solid #ddd; /* Borda */
 }
-
-table.tabela-horario tr:nth-child(even) { /* Linhas pares */
-    background-color: #fce4ec; /* Fundo rosa */
+/* Define as linhas pares da tabela
+    tr:nth-child(even) → significa "filho de posição par".
+*/
+.tabela-horario tr:nth-child(even) { /* Linhas pares 
+       background-color→: #fce4ec; /* Fundo rosa */
 }
 
 /* ================================
@@ -166,4 +168,5 @@ table.tabela-horario tr:nth-child(even) { /* Linhas pares */
     color: #ad1457; /* Cor */
     margin-top: 0; /* Remove margem */
 }
+
 
