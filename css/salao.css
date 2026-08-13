@@ -148,7 +148,7 @@ legend { /* Título do formulário */
     tr:nth-child(even) → significa "filho de posição par".
 */
 .tabela-horario tr:nth-child(even) { 
-       background-color→: #fce4ec; /* Fundo rosa */
+       background-color: #fce4ec; /* Fundo rosa */
 }
 
 /* ================================
