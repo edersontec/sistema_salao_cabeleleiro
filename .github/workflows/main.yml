@@ -1,0 +1,35 @@
+name: Teste do Sistema Salão
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Baixa os arquivos do repositório
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      # Instala o Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Instala o Lighthouse CI
+      - name: Instalar Lighthouse CI
+        run: npm install -g @lhci/cli
+
+      # Testa o sistema publicado no GitHub Pages
+      - name: Executar teste
+        run: |
+          lhci autorun \
+            --collect.url=https://wanderleylb.github.io/sistema_salao_cabeleleiro/ \
+            --collect.url=https://wanderleylb.github.io/sistema_salao_cabeleleiro/cadastro_agendamento.html \
+            --collect.url=https://wanderleylb.github.io/sistema_salao_cabeleleiro/comprovante.html \
+            --upload.target=temporary-public-storage
