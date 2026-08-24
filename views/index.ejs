@@ -7,21 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">    
 
   <!-- Define o título que aparece na aba do navegador -->
-  <title>Portal Salão de Cabeleireiro</title>
+  <title><%= salaoNome %></title>
 
   <!-- Importa o arquivo CSS externo para estilizar a página -->
-  <link rel="stylesheet" href="css/salao.css">
+  <link rel="stylesheet" href="/css/salao.css">
 </head>
 <body>
 
     <!-- Título principal da página -->
-    <h2>PORTAL SALÃO DE CABELEIREIRO</h2>
+    <h2><%= salaoNome %></h2>
 
     <!-- Menu de navegação principal -->
   <ul class="menu">
  
     <!-- Link para a página de agendamento -->
-    <li><a href="cadastro_agendamento.html">AGENDAMENTO</a></li>
+    <li><a href="/agendamento">AGENDAMENTO</a></li>
 
     <!-- Link fictício para serviços -->
     <li><a href="#servicos">Serviços</a></li>
@@ -33,7 +33,7 @@
 
   <!-- Banner com imagem externa (mantido o mesmo nome do arquivo) -->
   <img id="banner" 
-       src="imagem/banner.jpg"
+       src="/imagem/banner.jpg"
        alt="Imagem do banner do Salão de Cabeleireiro">
 
   <!-- Caixa branca com conteúdo informativo principal -->
@@ -114,7 +114,7 @@
 
   <!-- Rodapé da página -->
   <footer id="rodape">
-    <p>&copy; 2026 - Portal Salão de Cabeleireiro | Desenvolvido para fins educacionais</p>
+    <p>&copy; 2026 - <%= salaoNome %> | Desenvolvido para fins educacionais</p>
   </footer>    
 
 </body> 
