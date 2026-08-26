@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8"> <!-- Define a codificação -->
-    <meta name="author" content="Wanderley Lope Batista">
-    <meta name="viewport" content="device-width, initial-scale=1.0">
-
-    <title>Agendamento</title> <!-- Título da página -->
-
-    <link rel="stylesheet" href="/css/salao.css"> <!-- Carrega o CSS -->
-    <script src="/js/salao.js"></script> <!-- Carrega o JavaScript -->
-
-</head>
-
-<body>
-
-<h2>AGENDAMENTO</h2> <!-- Título -->
-
-<ul class="menu"> <!-- Menu -->
-    <li><a href="index.html" target="principal">PÁGINA INICIAL</a></li> <!-- Link inicial -->
-</ul>
+<%- include('partials/header') %>
 
 <fieldset> <!-- Área do formulário -->
     <legend><strong>DADOS DO AGENDAMENTO</strong></legend> <!-- Título do formulário -->
@@ -61,8 +40,5 @@
     </form>
 </fieldset>
 
-<div id="resultado" style="margin-top: 20px; min-height: 50px;"></div> <!-- Área de resultado -->
-
-</body>
-</html>
+<%- include('partials/footer') %>
 

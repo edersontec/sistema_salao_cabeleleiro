@@ -88,6 +88,6 @@ function cadastrarAgendamento() {
     // ---------------------------------------------------------
     // ABRE A PÁGINA DO COMPROVANTE
     // ---------------------------------------------------------
-    window.location.href = "comprovante.html";
+    window.location.href = "/comprovante";
     // Redireciona para a página do comprovante
 }

@@ -81,7 +81,7 @@ legend { /* Título do formulário */
     color: #ad1457; /* Cor do texto */
 }
 
-#nome { /* Campo nome */
+input[name="nome"], input[name="email"], input[name="whatsapp"], textarea { /* Campo nome */
     width: 95%; /* Largura */
     padding: 12px; /* Espaçamento */
     font-size: 18px; /* Tamanho da fonte */

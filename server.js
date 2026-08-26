@@ -16,10 +16,18 @@ app.use(express.json());
 
 // 3. DEFINIÇÃO DAS ROTAS (Substituindo o acesso direto a arquivos)
 
+// Middleware global para variáveis de ambiente
+app.use((req, res, next) => {
+    // Fica disponível em absolutamente qualquer arquivo .ejs
+    res.locals.salaoNome = process.env.SALAO_NAME || "Salão de Beleza";
+    
+    next(); // Passa para a próxima função/rota
+});
+
 // Rota da página inicial
 app.get('/', (req, res) => {
     // Você pode passar dados do servidor para o HTML se quiser
-    res.render('index', { salaoNome: process.env.SALAO_NAME || "Salão de Beleza" });
+    res.render('index');
 });
 
 // Rota para o formulário de agendamento
@@ -42,6 +50,16 @@ app.post('/agendar', (req, res) => {
 
     // Redireciona ou renderiza a página de comprovante passando os dados informados
     res.render('comprovante', { cliente, data, hora, servico });
+});
+
+// Rota para o formulário de servicos
+app.get('/servicos', (req, res) => {
+    res.render('servicos');
+});
+
+// Rota para o formulário de contato
+app.get('/contato', (req, res) => {
+    res.render('contato');
 });
 
 // Inicializa o servidor
