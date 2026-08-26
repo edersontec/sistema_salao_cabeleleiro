@@ -57,37 +57,53 @@ function cadastrarAgendamento() {
     });
 	
 	// ---------------------------------------------------------
-    // SALVA OS DADOS NO LOCALSTORAGE
+    // ENVIA OS DADOS PARA O SERVIDOR SALVAR NO BANCO DE DADOS
     // ---------------------------------------------------------
-	/* Ao final, "listaServicos" terá somente os serviços
-	que foram marcados pelo usuário.
-	
-	 EXEMPLO:
-	 Se o usuário selecionar: Corte, Barba e Sombrancelha
-	 
-	 O array ficará assim:
-	 ["Corte", "Barba", "Sombrancelha"]
-	
-	*/
+    fetch("/agendar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            cliente: nome,
+            profissional: profissional,
+            sexo: sexo,
+            servico: listaServicos,
+            data: data,
+            hora: horario,
+        }),
+    })
+    .then(function(resposta) {
+        if (!resposta.ok) {
+            throw new Error("Falha ao salvar o agendamento");
+        }
 
-    // ---------------------------------------------------------
-    // SALVA OS DADOS NO LOCALSTORAGE
-    // ---------------------------------------------------------
-    localStorage.setItem("nomeCliente", nome);
+        return resposta.json();
+    })
+    .then(function(dados) {
+        // ---------------------------------------------------------
+        // SALVA OS DADOS NO LOCALSTORAGE
+        // ---------------------------------------------------------
+        localStorage.setItem("nomeCliente", nome);
 
-    localStorage.setItem("profissional", profissional);
-    
-    localStorage.setItem("sexoCliente", sexo);
-    
-    localStorage.setItem("listaServicos", listaServicos.join(", "));
-    
-    localStorage.setItem("data", data);
-    
-    localStorage.setItem("horario", horario);
+        localStorage.setItem("profissional", profissional);
 
-    // ---------------------------------------------------------
-    // ABRE A PÁGINA DO COMPROVANTE
-    // ---------------------------------------------------------
-    window.location.href = "/comprovante";
-    // Redireciona para a página do comprovante
+        localStorage.setItem("sexoCliente", sexo);
+
+        localStorage.setItem("listaServicos", listaServicos.join(", "));
+
+        localStorage.setItem("data", data);
+
+        localStorage.setItem("horario", horario);
+
+        // ---------------------------------------------------------
+        // ABRE A PÁGINA DO COMPROVANTE COM O ID DO AGENDAMENTO SALVO
+        // ---------------------------------------------------------
+        window.location.href = "/comprovante?id=" + dados.id;
+        // Redireciona para a página do comprovante
+    })
+    .catch(function(erro) {
+        alert("Não foi possível salvar o agendamento. Tente novamente.");
+        console.error(erro);
+    });
 }

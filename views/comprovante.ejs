@@ -17,16 +17,21 @@
 
 <script>
     // ========================================================= 
-    // RECUPERAÇÃO DOS DADOS DO LOCALSTORAGE
+    // RECUPERAÇÃO DOS DADOS SALVOS NO BANCO (enviados pelo servidor)
+    // =========================================================
+    const agendamentoDB = <%- JSON.stringify(agendamento) %>;
+
+    // =========================================================
+    // RECUPERAÇÃO DOS DADOS DO LOCALSTORAGE (fallback)
     // =========================================================
 
     // Recupera o nome do cliente. // || "Não informado" = usa "Não informado" caso não exista valor.
-    let nomeCliente = localStorage.getItem("nomeCliente") || "Não informado";
-    let profissional = localStorage.getItem("profissional") || "Não informado";
-    let sexoCliente = localStorage.getItem("sexoCliente") || "Não informado";
-    let listaServicos = localStorage.getItem("listaServicos") || "Nenhum";
+    let nomeCliente = agendamentoDB ? agendamentoDB.nome : (localStorage.getItem("nomeCliente") || "Não informado");
+    let profissional = agendamentoDB ? agendamentoDB.profissional : (localStorage.getItem("profissional") || "Não informado");
+    let sexoCliente = agendamentoDB ? agendamentoDB.sexo : (localStorage.getItem("sexoCliente") || "Não informado");
+    let listaServicos = agendamentoDB ? JSON.parse(agendamentoDB.services || "[]").join(", ") : (localStorage.getItem("listaServicos") || "Nenhum");
     let dataAtendimento = localStorage.getItem("data") || "Não informada";
-    let horarioAtendimento = localStorage.getItem("horario") || "Não informado";
+    let horarioAtendimento = agendamentoDB ? agendamentoDB.hora : (localStorage.getItem("horario") || "Não informado");
 
     // =========================================================
     // LOCALIZAÇÃO DA ÁREA DO COMPROVANTE
