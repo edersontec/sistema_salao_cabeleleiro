@@ -1,109 +1,103 @@
-
 // =========================================================
-// FUNÇÃO DE CADASTRO DO AGENDAMENTO
+// FUNÇÕES AUXILIARES DE RESPONSABILIDADE ÚNICA
 // ========================================================= 
 
-function cadastrarAgendamento() {
-
-    // Recupera os dados digitados no formulário
+// Recupera os dados digitados no formulário
+function obterDadosFormulario() {
     let nome = document.getElementById("nome").value;
-
     let profissional = document.getElementById("profissional").value;
-
-    let sexo = document.querySelector('input[name="sexo"]:checked').value;
-    
+    let sexoChecked = document.querySelector('input[name="sexo"]:checked');
+    let sexo = sexoChecked ? sexoChecked.value : "";
     let data = document.getElementById("data").value;
-    
     let horario = document.getElementById("horario").value;
 
-    // ---------------------------------------------------------
-    // RECUPERA OS SERVIÇOS OS SERVIÇOS SELECINADOS PELO USUÁRIO
-    // ---------------------------------------------------------
-	/* querySelectorAll procura no HTML todos os elementos
-	   que possuem a classe "serv" e que estão marcados (:checked).
-	   Exemplo: se o aluno marcou "Corte" e "Barba",
-	   os dois elementos serão armazenado na variável "serviços".
-	*/
+    return { nome, profissional, sexo, data, horario };
+}
+
+// Recupera os serviços selecionados pelo usuário
+function obterServicosSelecionados() {
+    /* querySelectorAll procura no HTML todos os elementos
+       que possuem a classe "serv" e que estão marcados (:checked).
+    */
     let servicos = document.querySelectorAll(".serv:checked");
-    // ----------------------------------------------------------
-    // CRIA UMA LISTA VAZIA PARA ARMAZENAR OS SERVIÇOS ESCOLHIDOS
-	// ----------------------------------------------------------
-	
-	/* Cria uma array (lista) vazio.
-	   Ele será usado para armazenar somente os valores
-	   dos serviços que foram selecionados pelo usuário.
-	*/
-
     let listaServicos = [];
-	
-    // ----------------------------------------------------------
-    // PERCORRE TODOS OS SERVIÇOS SELECIONADOS
-    // ----------------------------------------------------------
-	
+
     /*  forEach() percorre um por um os serviços encontrados.
-	    A variável "serviços" representa o serviço atual.
-		durante casa repetição do forEach().
-	*/
+        Adiciona o serviço à lista
+    */
     servicos.forEach(function(servico) {
-		
-	/* push*() adiciona um novo item ao final do array.
-	   o ".value" pega o valor do serviço definido no HTML.
-	
-	*/	
-
         listaServicos.push(servico.value);
-
-         // Adiciona o serviço à lista
     });
-	
-	// ---------------------------------------------------------
-    // ENVIA OS DADOS PARA O SERVIDOR SALVAR NO BANCO DE DADOS
-    // ---------------------------------------------------------
-    fetch("/agendar", {
+
+    return listaServicos;
+}
+
+// Envia os dados para o servidor salvar no banco de dados
+function salvarAgendamentoServidor(dados, listaServicos) {
+    return fetch("/agendar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            cliente: nome,
-            profissional: profissional,
-            sexo: sexo,
+            cliente: dados.nome,
+            profissional: dados.profissional,
+            sexo: dados.sexo,
             servico: listaServicos,
-            data: data,
-            hora: horario,
+            data: dados.data,
+            hora: dados.horario,
         }),
     })
     .then(function(resposta) {
         if (!resposta.ok) {
             throw new Error("Falha ao salvar o agendamento");
         }
-
         return resposta.json();
-    })
-    .then(function(dados) {
-        // ---------------------------------------------------------
-        // SALVA OS DADOS NO LOCALSTORAGE
-        // ---------------------------------------------------------
-        localStorage.setItem("nomeCliente", nome);
-
-        localStorage.setItem("profissional", profissional);
-
-        localStorage.setItem("sexoCliente", sexo);
-
-        localStorage.setItem("listaServicos", listaServicos.join(", "));
-
-        localStorage.setItem("data", data);
-
-        localStorage.setItem("horario", horario);
-
-        // ---------------------------------------------------------
-        // ABRE A PÁGINA DO COMPROVANTE COM O ID DO AGENDAMENTO SALVO
-        // ---------------------------------------------------------
-        window.location.href = "/comprovante?id=" + dados.id;
-        // Redireciona para a página do comprovante
-    })
-    .catch(function(erro) {
-        alert("Não foi possível salvar o agendamento. Tente novamente.");
-        console.error(erro);
     });
+}
+
+// Salva os dados no localStorage
+function salvarLocalStorage(dados, listaServicos) {
+    localStorage.setItem("nomeCliente", dados.nome);
+    localStorage.setItem("profissional", dados.profissional);
+    localStorage.setItem("sexoCliente", dados.sexo);
+    localStorage.setItem("listaServicos", listaServicos.join(", "));
+    localStorage.setItem("data", dados.data);
+    localStorage.setItem("horario", dados.horario);
+}
+
+// Abre a página do comprovante com o id do agendamento salvo
+function redirecionarParaComprovante(id) {
+    window.location.assign("/comprovante?id=" + id);
+}
+
+// =========================================================
+// FUNÇÃO DE CADASTRO DO AGENDAMENTO (COORDENADORA)
+// ========================================================= 
+
+function cadastrarAgendamento() {
+    let dados = obterDadosFormulario();
+    let listaServicos = obterServicosSelecionados();
+
+    salvarAgendamentoServidor(dados, listaServicos)
+        .then(function(dadosSalvos) {
+            salvarLocalStorage(dados, listaServicos);
+            redirecionarParaComprovante(dadosSalvos.id);
+        })
+        .catch(function(erro) {
+            alert("Não foi possível salvar o agendamento. Tente novamente.");
+            console.error(erro);
+        });
+}
+
+// Exportações condicionais para ambiente de testes Jest (Node)
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = {
+        obterDadosFormulario,
+        obterServicosSelecionados,
+        salvarAgendamentoServidor,
+        salvarLocalStorage,
+        redirecionarParaComprovante,
+        cadastrarAgendamento
+    };
 }
