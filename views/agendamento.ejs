@@ -1,44 +1,118 @@
-<%- include('partials/header') %>
-
-<fieldset> <!-- Área do formulário -->
-    <legend><strong>DADOS DO AGENDAMENTO</strong></legend> <!-- Título do formulário -->
-
-    <form onsubmit="cadastrarAgendamento(); return false;"> <!-- Executa a função -->
-
-        <label><strong>Nome do Cliente:</strong></label><br> <!-- Nome -->
-        <input type="text" id="nome" required><br><br> <!-- Campo nome -->
-
-        <label><strong>Profissional Preferido:</strong></label><br> <!-- Profissional -->
-        <select id="profissional"> <!-- Lista de profissionais -->
-            <option value="Carlos (Cabeleireiro)">Carlos (Cabeleireiro)</option>
-            <option value="Mariana (Cabeleireira)">Mariana (Cabeleireira)</option>
-            <option value="Roberto (Barbeiro)">Roberto (Barbeiro)</option>
-            <option value="Ana (Esteticista)">Ana (Esteticista)</option>
-            <option value="Indiferente">Indiferente</option>
-        </select><br><br>
-
-        <label><strong>Sexo:</strong></label><br> <!-- Perfil -->
-        <input type="radio" name="sexo" value="Masculino" required> Masculino
-        <input type="radio" name="sexo" value="Feminino"> Feminino<br><br>
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento | Studio Maison</title>
     
+    <link rel="stylesheet" href="/css/salao.css">
+    <script src="/js/salao.js" defer></script>
+  
+</head>
+  <body>
+    
+    <header class="topo-pagina">
+      <a class="marca" href="/">
+        <span>SM</span>
+        Studio Maison
+      </a>
+      <a href="/" class="botao-voltar">← Voltar para a página inicial</a>
+    </header>
 
-        <label><strong>Serviços Desejados:</strong></label><br> <!-- Serviços -->
-        <input type="checkbox" class="serv" value="Corte"> Corte de Cabelo
-        <input type="checkbox" class="serv" value="Barba"> Barba
-        <input type="checkbox" class="serv" value="Coloração"> Coloração
-        <input type="checkbox" class="serv" value="Escova / Hidratação"> Escova / Hidratação
-        <input type="checkbox" class="serv" value="Manicure"> Manicure<br><br>
+    <main class="agendamento-container">
+      <div class="agendamento-cabecalho">
+        <p class="eyebrow">RESERVE SEU HORÁRIO</p>
+        <h2>Dados do Agendamento</h2>
+        <p class="muted">Preencha os campos abaixo para confirmar seu atendimento.</p>
+      </div>
 
-        <label><strong>Data do Atendimento:</strong></label><br> <!-- Data -->
-        <input type="date" id="data" required><br><br> <!-- Campo data -->
+      <form class="formulario-card" onsubmit="cadastrarAgendamento(); return false;">
+        
+        <div class="campo-grupo">
+          <label for="nome">Nome do Cliente</label>
+          <input type="text" id="nome" required placeholder="Digite seu nome completo">
+        </div>
 
-        <label><strong>Horário:</strong></label><br> <!-- Horário -->
-        <input type="time" id="horario" required><br><br> <!-- Campo horário -->
+        <div class="campo-grid">
+          <div class="campo-grupo">
+            <label for="profissional">Profissional Preferido</label>
+            <select id="profissional">
+              <option value="">Selecione um profissional</option>
+              <option value="Carlos (Cabeleireiro)">Carlos (Cabeleireiro)</option>
+              <option value="Mariana (Cabeleireira)">Mariana (Cabeleireira)</option>
+              <option value="Roberto (Barbeiro)">Roberto (Barbeiro)</option>
+              <option value="Ana (manicure)">Ana (manicure )</option>
+              <option value="Indiferente">Indiferente</option>
+            </select>
+          </div>
 
-        <input class="botao" type="submit" value="CONFIRMAR AGENDAMENTO"> <!-- Confirma -->
+          <div class="campo-grupo">
+            <label for="genero">Gênero</label>
+            <select id="genero">
+              <option value="">Selecione</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Prefiro não informar/Outros">Prefiro não informar</option>
+            </select>
+          </div>
+        </div>
 
-    </form>
-</fieldset>
+        <label class="servico-item">
+  <input class="serv" type="checkbox" value="Corte">
+  <div class="servico-info">
+    <strong>Corte</strong>
+    <span>R$ 65,00</span>
+  </div>
+</label>
+
+<label class="servico-item">
+  <input class="serv" type="checkbox" value="Barba">
+  <div class="servico-info">
+    <strong>Barba</strong>
+    <span>R$ 45,00</span>
+  </div>
+</label>
+
+<label class="servico-item">
+  <input class="serv" type="checkbox" value="Coloração">
+  <div class="servico-info">
+    <strong>Coloração</strong>
+    <span>R$ 90,00</span>
+  </div>
+</label>
+
+<label class="servico-item">
+  <input class="serv" type="checkbox" value="Escova / Hidratação">
+  <div class="servico-info">
+    <strong>Escova / Hidratação</strong>
+    <span>R$ 70,00</span>
+  </div>
+</label>
+
+<label class="servico-item">
+  <input class="serv" type="checkbox" value="Manicure">
+  <div class="servico-info">
+    <strong>Manicure</strong>
+    <span>R$ 50,00</span>
+  </div>
+</label>
+          </div>
+        </div>
+
+        <div class="campo-grid">
+          <div class="campo-grupo">
+            <label for="data">Data do Atendimento</label>
+            <input type="date" id="data" required>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="horario">Horário</label>
+            <input type="time" id="horario" required>
+          </div>
+        </div>
+
+        <button class="botao botao-full" type="submit">Confirmar Agendamento</button>
+      </form>
 
 <%- include('partials/footer') %>
 

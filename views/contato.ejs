@@ -1,25 +1,48 @@
 <%- include('partials/header') %>
 
-    <!-- Formulário simples de contato -->
-    <h3 id="contato">&#128233; Fale Conosco</h3>
-    <form>
-      <!-- Campo para o nome do cliente -->
-      <label>Nome:</label><br>
-      <input type="text" id="nome" name="nome"><br><br>
+      <section class="secao contato-secao" id="contato">
+        <div>
+          <p class="eyebrow">CONVERSE COM A GENTE</p>
+          <h2>Tem uma dúvida?</h2>
+          <p class="muted">
+            Envie uma mensagem e retornaremos assim que possível.
+          </p>
+        </div>
 
-      <!-- Campo para o e-mail -->
-      <label>Email:</label><br>
-      <input type="email" name="email"><br><br>
+        <form id="contatoForm" class="contato-form">
+          <label for="nome">Seu nome</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            required
+            placeholder="Escreva seu nome"
+          >
 
-      <label>WhatsApp:</label><br>
-      <input type="tel" name="whatsapp" placeholder="(31) 9xxxx-xxxx"><br><br>
+          <label for="email">Seu e-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="seu@email.com"
+          >
 
-      <!-- Caixa de texto para mensagem -->
-      <label>Mensagem:</label><br>
-      <textarea rows="4" cols="40"></textarea><br><br>
+          <label for="mensagem">Mensagem</label>
+          <textarea
+            id="mensagem"
+            name="mensagem"
+            rows="3"
+            required
+            placeholder="Escreva sua mensagem..."
+          ></textarea>
 
-      <!-- Botão de envio -->
-      <button class="botao" type="submit">ENVIAR</button>
-    </form>
+          <button class="botao" type="submit">
+            Enviar mensagem
+            <span aria-hidden="true">→</span>
+          </button>
+          <p id="mensagemContato" class="status" role="status"></p>
+        </form>
+      </section>
 
 <%- include('partials/footer') %>

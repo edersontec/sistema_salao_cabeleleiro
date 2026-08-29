@@ -2,48 +2,38 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <!-- Define o conjunto de caracteres como UTF-8 (permite acentuação corretamente) -->
-  <meta charset="UTF-8">
-  <meta name="author" content="Wanderley Lopes Batista">     
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Wanderley Lopes Batista">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Maison</title>
+    
+    <!-- Importa o arquivo CSS externo para estilizar a página -->
+    <link rel="stylesheet" href="/css/salao.css">
 
-  <!-- Define o título que aparece na aba do navegador -->
-  <title><%= salaoNome %></title>
+    <!-- Carrega o JavaScript -->
+    <script src="/js/salao.js"></script>
 
-  <!-- Importa o arquivo CSS externo para estilizar a página -->
-  <link rel="stylesheet" href="/css/salao.css">
+  </head>
 
-  <!-- Carrega o JavaScript -->
-  <script src="/js/salao.js"></script>
+  <body>
+    <header class="topo">
+      <a class="marca" href="/">
+        <span>SM</span>
+        Studio Maison
+      </a>
 
-</head>
-<body>
+      <button class="tema-toggle" id="temaToggle" type="button" aria-label="Alternar tema">
+        ☾
+      </button>
 
-    <!-- Título principal da página -->
-    <h2><%= salaoNome %></h2>
+      <nav class="menu" aria-label="Navegação principal">
+        <a href="/">Home</a>
+        <a href="/servicos">Serviços</a>
+        <a href="/contato">Contato</a>
+        <a href="/experiencia">Experiência</a>
+        <a class="menu-cta" href="/agendamento">Agendar horário</a>
+      </nav>
+    </header>
 
-    <!-- Menu de navegação principal -->
-  <ul class="menu">
-
-    <!-- Link para a página home -->
-    <li><a href="/">Home</a></li>
-
-    <!-- Link para a página de agendamento -->
-    <li><a href="/agendamento">Agendamento</a></li>
-
-    <!-- Link fictício para serviços -->
-    <li><a href="/servicos">Serviços</a></li>
-
-    <!-- Link fictício para contato -->
-    <li><a href="/contato">Contato</a></li>
-	
-  </ul>
-
-  <!-- Banner com imagem externa (mantido o mesmo nome do arquivo) -->
-  <img id="banner" 
-       src="/imagem/banner.jpg"
-       alt="Imagem do banner do Salão de Cabeleireiro">
-
-  <!-- Caixa branca com conteúdo informativo principal -->
-  <div style="background: white; padding: 20px; border-radius: 10px;">
+    <main>

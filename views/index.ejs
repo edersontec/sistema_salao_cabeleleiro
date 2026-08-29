@@ -1,13 +1,64 @@
 <%- include('partials/header') %>
 
-    <!-- Subtítulo da seção -->
-    <h3>&#x2702;&#xFE0F; Nossos Cuidados</h3>
+    <section class="hero" >
+        <img
+          id="banner"
+          src="/imagem/banner.jpg"
+          alt="Profissional cuidando do cabelo de uma cliente"
+        >
 
-    <!-- Parágrafos explicativos -->
-    <p>Oferecemos o melhor atendimento para cuidar do seu visual e bem-estar.</p>
-    <p>Nossos profissionais são especializados nas últimas tendências de corte e estética.</p>
-    <p>Utilizamos produtos de alta qualidade para o tratamento dos cabelos e barba.</p>
-    <p>O ambiente é climatizado para garantir o seu total conforto durante o atendimento.</p>
-    <p>Venha nos visitar e comprove o nosso padrão de excelência.</p>
+        <div class="hero-conteudo">
+          <h1 id="titulo-principal">Seu melhor visual começa aqui.</h1>
+          <p>
+            Um atendimento de excelëncia, moderno e feito para você sair se sentindo
+            ainda melhor.
+          </p>
+          <a class="botao" href="/agendamento">
+            Escolher meu horário
+            <span >→</span>
+          </a>
+        </div>
+
+        <div class="hero-selo">
+          <strong>4.9</strong>
+          <span>avaliação média<br>dos clientes</span>
+        </div>
+      </section>
+
+      <section class="faixa-destaques" >
+        <div>
+          <strong>01</strong>
+          <span>Profissionais<br>especializados</span>
+        </div>
+        <div>
+          <strong>02</strong>
+          <span>Produtos<br>de alta qualidade</span>
+        </div>
+        <div>
+          <strong>03</strong>
+          <span>Ambiente leve<br>e confortável</span>
+        </div>
+      </section>
+
+      <section class="secao" id="experiencia">
+        <div class="secao-titulo">
+          <div>
+            <p class="eyebrow">A EXPERIÊNCIA MAISON</p>
+            <h2>
+              Detalhes que fazem<br>
+              <em>toda a diferença.</em>
+            </h2>
+          </div>
+
+          <div class="texto-intro">
+            <p>
+              Mais do que um corte, criamos um momento para você. Nossa equipe
+              combina técnica, escuta e tendências para entregar um resultado
+              que combina com a sua rotina.
+            </p>
+            <a class="link-seta" href="/contato">Fale com a equipe →</a>
+          </div>
+        </div>
+      </section>
 
 <%- include('partials/footer') %>

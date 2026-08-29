@@ -1,42 +1,80 @@
 <%- include('partials/header') %>
 
-    <!-- Lista de serviços oferecidos -->
-    <h3>&#128135 Serviços Oferecidos</h3>
-    <ul>
-      <li>Corte de Cabelo</li>
-      <li>Barba</li>
-      <li>Pintura / Coloração</li>
-      <li>Escova / Hidratação</li>
-      <li>Manicure e Pedicure</li>
-    </ul>
-    
-    <!-- Tabela simples com horários -->
-    <h3> &#x23F0 Horário de Funcionamento</h3>
-    
-    <table class="tabela-horario">
-      <tr>
-        <th>Dia da Semana</th>
-        <th>Horário de Atendimento</th>
-        <th>Observações</th>
-      </tr>
+      <section class="secao servicos-secao" id="servicos">
+        <div class="secao-cabecalho">
+          <div>
+            <p class="eyebrow">MENU DE SERVIÇOS</p>
+            <h2>Nossos Serviços</h2>
+          </div>
+          <a class="link-seta" href="/agendamento">
+            Ver disponibilidade →
+          </a>
+        </div>
 
-      <tr>
-        <td>Segunda a Sexta</td>
-        <td>09:00 às 19:00</td>
-        <td>Atendimento normal</td>
-      </tr>
+        <div class="servicos-grid">
+          <article class="servico-card destaque">
+            <span class="numero">01</span>
+            <div>
+              <h3>Corte</h3>
+              <p>Cortes personalizados baseados em visagismo para um visual único.</p>
+              <strong>A partir de R$ 45</strong>
+            </div>
+          </article>
 
-      <tr>
-        <td>Sábado</td>
-        <td>09:00 às 17:00</td>
-        <td>Horário reduzido</td>
-      </tr>
+          <article class="servico-card">
+            <span class="numero">02</span>
+            <div>
+              <h3>Barba</h3>
+              <p>Modelagem, alinhamento de barba e cuidados com a pele.</p>
+              <strong>A partir de R$ 65</strong>
+            </div>
+          </article>
 
-      <tr>
-        <td>Domingo</td>
-        <td>Fechado</td>
-        <td>Apenas com hora marcada</td>
-      </tr>
-    </table>
+          <article class="servico-card">
+            <span class="numero">03</span>
+            <div>
+              <h3>Coloração & tratamento</h3>
+              <p>Coloração completa, luzes e hidratação para todos os tipos de cabelo.</p>
+              <strong>A partir de R$ 90</strong>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="secao agenda-secao" id="horarios">
+        <div>
+          <p class="eyebrow">PLANEJE SUA VISITA</p>
+          <h2>
+            Sua identidade,<br>
+            <em>nossa arte.</em>
+          </h2>
+          <p class="muted">
+            Atendimentos de terça a sábado. Reserve seu horário em poucos
+            passos.
+          </p>
+          <a class="botao" href="/agendamento">
+            Agendar agora
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <table class="tabela-horario">
+          <caption>Horários de funcionamento</caption>
+          <tbody>
+            <tr>
+              <th>Terça a sexta</th>
+              <td>09:00 - 19:00</td>
+            </tr>
+            <tr>
+              <th>Sábado</th>
+              <td>09:00 - 17:00</td>
+            </tr>
+            <tr>
+              <th>Domingo e segunda</th>
+              <td>Fechado</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
 <%- include('partials/footer') %>

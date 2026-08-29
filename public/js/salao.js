@@ -6,7 +6,7 @@
 function obterDadosFormulario() {
     let nome = document.getElementById("nome").value;
     let profissional = document.getElementById("profissional").value;
-    let sexoChecked = document.querySelector('input[name="sexo"]:checked');
+    let sexoChecked = document.querySelector('select#genero');
     let sexo = sexoChecked ? sexoChecked.value : "";
     let data = document.getElementById("data").value;
     let horario = document.getElementById("horario").value;
@@ -89,6 +89,48 @@ function cadastrarAgendamento() {
             console.error(erro);
         });
 }
+
+function configurarPagina() {
+    const temaToggle = document.getElementById('temaToggle');
+    const temaSalvo = localStorage.getItem('temaStudio');
+
+    if (temaSalvo === 'escuro') {
+        document.body.classList.add('tema-escuro');
+    }
+
+    if (temaToggle) {
+        atualizarIconeTema(temaToggle);
+        temaToggle.addEventListener('click', () => {
+            document.body.classList.toggle('tema-escuro');
+            const escuro = document.body.classList.contains('tema-escuro');
+            localStorage.setItem('temaStudio', escuro ? 'escuro' : 'claro');
+            atualizarIconeTema(temaToggle);
+        });
+    }
+
+    const contatoForm = document.getElementById('contatoForm');
+    if (contatoForm) {
+        contatoForm.addEventListener('submit', (evento) => {
+            evento.preventDefault();
+            document.getElementById('mensagemContato').textContent =
+                'Mensagem recebida. Em breve nossa equipe falará com você.';
+            contatoForm.reset();
+        });
+    }
+
+    const dataInput = document.getElementById('data');
+    if (dataInput) {
+        const hoje = new Date();
+        dataInput.min = hoje.toISOString().split('T')[0];
+    }
+}
+
+function atualizarIconeTema(temaToggle) {
+    const escuro = document.body.classList.contains('tema-escuro');
+    temaToggle.innerHTML = escuro ? '☀️' : '🌙';
+}
+
+document.addEventListener("DOMContentLoaded", configurarPagina);
 
 // Exportações condicionais para ambiente de testes Jest (Node)
 if (typeof module !== "undefined" && module.exports) {
