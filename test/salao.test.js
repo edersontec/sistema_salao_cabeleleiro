@@ -7,7 +7,7 @@ const { replaceLocation } = require("jest-location-mock/hooks/replace-location")
 const { reset } = require("jest-location-mock/hooks/reset");
 
 const {
-    obterDadosFormulario,
+    obterDadosFormularioAgendamento,
     obterServicosSelecionados,
     salvarAgendamentoServidor,
     salvarLocalStorage,
@@ -53,9 +53,9 @@ describe("Testes Unitários - salao.js", () => {
     });
 
     // ==========================================
-    // 1. TESTES PARA obterDadosFormulario()
+    // 1. TESTES PARA obterDadosFormularioAgendamento()
     // ==========================================
-    describe("obterDadosFormulario()", () => {
+    describe("obterDadosFormularioAgendamento()", () => {
         test("1. Deve ler os valores corretamente quando o formulário estiver todo preenchido", () => {
             document.body.innerHTML = `
                 <input id="nome" value="Carlos Silva" />
@@ -65,7 +65,7 @@ describe("Testes Unitários - salao.js", () => {
                 <input id="horario" value="14:00" />
             `;
 
-            const dados = obterDadosFormulario();
+            const dados = obterDadosFormularioAgendamento();
             expect(dados).toEqual({
                 nome: "Carlos Silva",
                 profissional: "Pedro Martins",
@@ -84,7 +84,7 @@ describe("Testes Unitários - salao.js", () => {
                 <input id="horario" value="" />
             `;
 
-            const dados = obterDadosFormulario();
+            const dados = obterDadosFormularioAgendamento();
             expect(dados).toEqual({
                 nome: "",
                 profissional: "",
@@ -103,7 +103,7 @@ describe("Testes Unitários - salao.js", () => {
                 <input id="horario" value="15:30" />
             `;
 
-            const dados = obterDadosFormulario();
+            const dados = obterDadosFormularioAgendamento();
             expect(dados.sexo).toBe("");
         });
     });
@@ -299,7 +299,7 @@ describe("Testes Unitários - salao.js", () => {
 
 
         test("1. Deve coordenar todo o fluxo com sucesso (salvar no servidor, localStorage e redirecionar)", async () => {
-            // Setup do DOM para obterDadosFormulario e obterServicosSelecionados
+            // Setup do DOM para obterDadosFormularioAgendamento e obterServicosSelecionados
             document.body.innerHTML = `
                 <input id="nome" value="Felipe" />
                 <input id="profissional" value="Renato" />

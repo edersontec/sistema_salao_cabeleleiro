@@ -1,0 +1,80 @@
+<%- include('partials/header') %>
+
+      <section class="secao contato-secao" id="contato">
+
+        <form id="contatoForm" class="contato-form" onsubmit="cadastrarAvaliacao(); return false;">
+          <label for="nome">Seu nome</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            required
+            placeholder="Escreva seu nome"
+          >
+
+          <p>Como você avalia nosso serviço?</p>
+          <div class="rating">
+              <input type="radio" id="star5" name="avaliacao" value="5">
+              <label for="star5">★</label>
+              <input type="radio" id="star4" name="avaliacao" value="4">
+              <label for="star4">★</label>
+              <input type="radio" id="star3" name="avaliacao" value="3">
+              <label for="star3">★</label>
+              <input type="radio" id="star2" name="avaliacao" value="2">
+              <label for="star2">★</label>
+              <input type="radio" id="star1" name="avaliacao" value="1">
+              <label for="star1">★</label>
+          </div>
+
+          <label for="mensagem">Mensagem</label>
+          <textarea
+            id="mensagem"
+            name="mensagem"
+            rows="3"
+            required
+            placeholder="Escreva sua mensagem..."
+          ></textarea>
+
+          <button class="botao" type="submit">
+            Enviar avaliação
+            <span aria-hidden="true">→</span>
+          </button>
+          <p id="mensagemContato" class="status" role="status"></p>
+        </form>
+
+        <div>
+          <h3>Avaliações dos clientes</h3>
+
+          <% if (avaliacoes && avaliacoes.length > 0) { %>
+              <% avaliacoes.forEach(function(item) { %>
+                  <div class="card-avaliacao">
+                      <div class="header-avaliacao">
+                          <span class="nome"><%= item.nome %></span>
+                          
+                          <!-- Renderiza estrelas preenchidas e vazias baseado na nota -->
+                          <span class="estrelas">
+                              <%= "★".repeat(item.avaliacao) %><%= "☆".repeat(5 - item.avaliacao) %>
+                          </span>
+                      </div>
+                      
+                      <p class="mensagem"><%= item.mensagem %></p>
+                      
+                      <!-- Formata a data de forma simples -->
+                      <span class="data">
+                          <%= new Date(item.createAt).toLocaleDateString('pt-BR') %>
+                      </span>
+                  </div>
+              <% }); %>
+          <% } else { %>
+              <p>Nenhuma avaliação encontrada.</p>
+          <% } %>
+
+
+          <p class="muted">
+            Envie sua avaliação, sua opinião é muito importante.
+          </p>
+        </div>
+
+      </section>
+
+<%- include('partials/footer') %>

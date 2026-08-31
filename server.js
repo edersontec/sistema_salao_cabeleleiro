@@ -2,7 +2,7 @@ require("dotenv").config(); // Carrega o arquivo .env secretamente
 const express = require("express");
 const app = express();
 const path = require("path");
-const { setAgendamentos, getAgendamentos } = require("./db/sqlLite");
+const { setAgendamentos, getAgendamentos, setAvaliacoes, getAvaliacoes } = require("./db/sqlLite");
 
 // 1. Configurar o motor de HTML (EJS)
 app.set("view engine", "ejs");
@@ -47,7 +47,7 @@ app.get("/comprovante", (req, res) => {
   res.render("comprovante", { agendamento: agendamento || null });
 });
 
-// Rota POST (Quando o cliente clica em "Enviar" no formulário)
+// Rota POST (Quando o cliente clica em "Enviar" no formulário de agendamento)
 app.post("/agendar", (req, res) => {
   // Captura os dados do formulário com total segurança no servidor
   const { cliente, data, hora, servico, profissional, sexo } = req.body;
@@ -71,6 +71,28 @@ app.post("/agendar", (req, res) => {
   res.json({ id, agendamento: agendamentoSalvo });
 });
 
+// Rota POST (Quando o cliente clica em "Enviar" no formulário de avaliação)
+app.post("/avaliar", (req, res) => {
+  // Captura os dados do formulário com total segurança no servidor
+  const { cliente, avaliacao, mensagem } = req.body;
+
+  // Grava o agendamento no banco SQLite
+  const id = setAvaliacoes({
+    nome: cliente,
+    avaliacao,
+    mensagem,
+    createAt: new Date().toISOString(),
+  });
+
+  // Busca o registro recém-salvo no banco para conferência
+  const [avaliacaoSalvo] = getAvaliacoes({ id });
+
+  console.log("Avaliacao salvo no banco de dados:", avaliacaoSalvo);
+
+  // Retorna o id para o front-end usar na página de comprovante
+  res.json({ id, avaliacao: avaliacaoSalvo });
+});
+
 // Rota para o formulário de servicos
 app.get("/servicos", (req, res) => {
   res.render("servicos");
@@ -79,6 +101,11 @@ app.get("/servicos", (req, res) => {
 // Rota para o formulário de contato
 app.get("/contato", (req, res) => {
   res.render("contato");
+});
+
+// Rota para o formulário de avaliacoes
+app.get("/avaliacoes", (req, res) => {
+  res.render("avaliacoes", {avaliacoes: getAvaliacoes()});
 });
 
 // Inicializa o servidor

@@ -3,7 +3,7 @@
 // ========================================================= 
 
 // Recupera os dados digitados no formulário
-function obterDadosFormulario() {
+function obterDadosFormularioAgendamento() {
     let nome = document.getElementById("nome").value;
     let profissional = document.getElementById("profissional").value;
     let sexoChecked = document.querySelector('select#genero');
@@ -76,7 +76,7 @@ function redirecionarParaComprovante(id) {
 // ========================================================= 
 
 function cadastrarAgendamento() {
-    let dados = obterDadosFormulario();
+    let dados = obterDadosFormularioAgendamento();
     let listaServicos = obterServicosSelecionados();
 
     salvarAgendamentoServidor(dados, listaServicos)
@@ -89,6 +89,56 @@ function cadastrarAgendamento() {
             console.error(erro);
         });
 }
+
+// Avaliações
+
+function obterDadosFormularioAvaliacao() {
+    let nome = document.getElementById("nome").value;
+    let avaliacao = document.querySelector('input[name="avaliacao"]:checked').value;
+    let mensagem = document.getElementById("mensagem").value;
+
+    return { nome, avaliacao, mensagem };
+}
+
+// Envia os dados para o servidor salvar no banco de dados
+function salvarAvaliacaoServidor(dados) {
+    return fetch("/avaliar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            cliente: dados.nome,
+            avaliacao: dados.avaliacao,
+            mensagem: dados.mensagem,
+        }),
+    })
+    .then(function(resposta) {
+        if (!resposta.ok) {
+            throw new Error("Falha ao salvar o avaliacao");
+        }
+        return resposta.json();
+    });
+}
+
+function cadastrarAvaliacao() {
+    let dados = obterDadosFormularioAvaliacao();
+
+    salvarAvaliacaoServidor(dados)
+        .then(function(dadosSalvos) {
+            redirecionarParaAvaliacao();
+        })
+        .catch(function(erro) {
+            alert("Não foi possível salvar a avaliação. Tente novamente.");
+            console.error(erro);
+        });
+}
+
+function redirecionarParaAvaliacao() {
+    window.location.assign("/avaliacoes");
+}
+
+// Configurações de tema front-end
 
 function configurarPagina() {
     const temaToggle = document.getElementById('temaToggle');
@@ -135,7 +185,7 @@ document.addEventListener("DOMContentLoaded", configurarPagina);
 // Exportações condicionais para ambiente de testes Jest (Node)
 if (typeof module !== "undefined" && module.exports) {
     module.exports = {
-        obterDadosFormulario,
+        obterDadosFormularioAgendamento,
         obterServicosSelecionados,
         salvarAgendamentoServidor,
         salvarLocalStorage,

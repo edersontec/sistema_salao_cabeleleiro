@@ -13,6 +13,17 @@ agendamentosDB.exec(`CREATE TABLE IF NOT EXISTS agendamentos
       createAt DATE NOT NULL
    )`);
 
+  agendamentosDB.exec(`CREATE TABLE IF NOT EXISTS avaliacoes 
+    (
+        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        nome CHAR(100),
+        avaliacao INTEGER DEFAULT 1,
+        mensagem TEXT,
+        createAt DATE NOT NULL
+   )`);
+
+// CRUD Agendamentos
+
 function setAgendamentos(agendamento) {
   const insert = agendamentosDB.prepare(`
       INSERT INTO agendamentos (nome, hora, profissional, sexo, services, createAt) 
@@ -64,4 +75,40 @@ function updateAgendamentos(id, agendamento) {
   update.run(...valores, id);
 }
 
-module.exports = { setAgendamentos, getAgendamentos, updateAgendamentos };
+// CRUD Avaliações
+
+function setAvaliacoes(avaliacao) {
+  const insert = agendamentosDB.prepare(`
+      INSERT INTO avaliacoes (nome, avaliacao, mensagem, createAt) 
+         VALUES (?, ?, ?, ?)
+    `);
+
+  const info = insert.run(
+    avaliacao.nome,
+    avaliacao.avaliacao, // Nota de 1 a 5
+    avaliacao.mensagem,
+    avaliacao.createAt
+  );
+
+  return info.lastInsertRowid;
+}
+
+function getAvaliacoes(filtro = {}) {
+  const campos = Object.keys(filtro);
+
+  if (campos.length === 0) {
+    const select = agendamentosDB.prepare(`SELECT * FROM avaliacoes`);
+    return select.all();
+  }
+
+  const where = campos.map((campo) => `${campo} = ?`).join(" AND ");
+  const valores = campos.map((campo) => filtro[campo]);
+
+  const select = agendamentosDB.prepare(
+    `SELECT * FROM avaliacoes WHERE ${where}`
+  );
+
+  return select.all(...valores);
+}
+
+module.exports = { setAgendamentos, getAgendamentos, updateAgendamentos, setAvaliacoes, getAvaliacoes };
