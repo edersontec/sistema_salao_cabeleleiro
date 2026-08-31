@@ -1,4 +1,4 @@
-# Sistema Salão Cabelereiro ( Studio Maison 💇‍♀️)
+# Sistema Salão Cabeleireiro ( Studio Maison 💇‍♀️)
 
 Sistema web para gerenciamento de um salão de cabeleireiro, desenvolvido com foco em organização, modularização e evolução de um projeto estático para uma aplicação Node.js.
 
